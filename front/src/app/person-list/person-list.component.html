@@ -1,0 +1,99 @@
+<template [ngIf]="personPage != null"> 
+
+
+<br/>
+
+
+<div class="container">
+
+	<div class="panel panel-primary">
+		<div class="panel-heading"><h2>Persons</h2></div>
+		<div class="panel-body bg-warning">
+
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<div id="list" class="row">
+					
+					<br/>
+
+						<div class="table-responsive col-md-12">
+							<table class="table table-striped table-bordered" cellspacing="0"
+								cellpadding="0">
+								<thead>
+									<tr class="info text-danger">
+										<th><app-table-sort [table]="self" [page]="personPage"
+												[label]="'First Name'" [property]="'firstname'"></app-table-sort></th>
+										<th><app-table-sort [table]="self" [page]="personPage"
+												[label]="'Last Name'" [property]="'lastname'"></app-table-sort></th>
+										<th><app-table-sort [table]="self" [page]="personPage"
+												[label]="'Age'" [property]="'age'"></app-table-sort></th>
+										<th><app-table-sort [table]="self" [page]="personPage"
+												[label]="'Gender'" [property]="'gender'"></app-table-sort></th>
+										<th class="text-primary">View</th>
+										<th class="text-primary">Remove</th>
+									</tr>
+								</thead>
+								<tbody>
+
+									<tr *ngFor="let person of personPage.content"
+										class="success text-primary">
+										<td>{{person.firstname}}</td>
+										<td>{{person.lastname}}</td>
+										<td>{{person.age}}</td>
+										<td>{{person.gender}}</td>
+										<td class="success"><a class="btn btn-success btn-block"
+											(click)="goToDetails(person)">Details</a> 
+										</td>
+										<td class="success">
+										   <a class="btn btn-danger btn-block"
+											(click)="currentPerson=person" data-toggle="modal"
+											data-target="#delete-modal">Delete</a>
+										</td>
+									</tr>
+
+								</tbody>
+							</table>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+			<!-- /#list -->
+
+
+
+			<app-table-pagination [table]="self" [page]="personPage"></app-table-pagination>
+
+			<!-- Modal -->
+			<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog"
+				aria-labelledby="modalLabel">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header bg-danger text-primary">
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Fechar">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="modalLabel">Delete person</h4>
+						</div>
+						<div class="modal-body bg-info text-danger">Do you want to
+							remove this item ?</div>
+						<div class="modal-footer">
+							<button type="button" (click)="delete(currentPerson)"
+								class="btn btn-primary" data-dismiss="modal">Yes</button>
+							<button type="button" class="btn btn-default"
+								data-dismiss="modal" data-dismiss="modal">No</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+
+</template>

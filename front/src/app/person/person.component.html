@@ -1,0 +1,84 @@
+<template [ngIf]="person != null"> <br />
+<br />
+
+<div class="container">
+
+
+	<div class="row">
+		<div class="col-md-6 ">
+
+			<div class="panel panel-primary">
+				<div class="panel-heading"><h3>Person &nbsp; ::  &nbsp; #{{person.id}}</h3></div>
+				<div class="panel-body bg-warning">
+
+					<div class="row">
+						<div class="col-md-12">
+							<p class="text-danger">
+								<strong>First name</strong>
+							</p>
+							<p class="text-primary">{{person.firstname}}</p>
+						</div>
+
+						<div class="col-md-12">
+							<p class="text-danger">
+								<strong>Last name</strong>
+							</p>
+							<p class="text-primary">{{person.lastname}}</p>
+						</div>
+
+						<div class="col-md-12">
+							<p class="text-danger">
+								<strong>Age</strong>
+							</p>
+							<p class="text-primary">{{person.age}}</p>
+						</div>
+						
+						<div class="col-md-12">
+							<p class="text-danger">
+								<strong>Gender</strong>
+							</p>
+							<p class="text-primary">{{person.gender}}</p>
+						</div>
+					</div>
+
+					<hr />
+					<div id="actions" class="row">
+						<div class="col-md-12">
+							<a (click)="back()" class="btn btn-primary btn-lg">Back</a>
+							<!-- href="edit.html" class="btn btn-default">Edit</a-->
+							<a href="#" class="btn btn-warning btn-lg" data-toggle="modal"
+								data-target="#delete-modal">Delete</a>
+						</div>
+					</div>
+
+					<!-- Modal -->
+					<div class="modal fade" id="delete-modal" tabindex="-1"
+						role="dialog" aria-labelledby="modalLabel">
+						<div class="modal-dialog" role="document">
+							<div class="modal-content">
+								<div class="modal-header bg-warning">
+									<button type="button" class="close" data-dismiss="modal"
+										aria-label="Fechar">
+										<span aria-hidden="true">&times;</span>
+									</button>
+									<h4 class="modal-title text-danger" id="modalLabel">Delete person</h4>
+								</div>
+								<div class="modal-body text-primary bg-success">Do you want to remove this item ?</div>
+								<div class="modal-footer bg-info">
+									<button type="button" (click)="delete(person)"
+										class="btn btn-primary" data-dismiss="modal">Yes</button>
+									<button type="button" class="btn btn-danger"
+										data-dismiss="modal" data-dismiss="modal">No</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+</template>
